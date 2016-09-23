@@ -584,6 +584,13 @@ void CallFunc(const vector<Value*>& args, Evaluator* ev, string* s) {
     Intern("5"), Intern("6"),  Intern("7"), Intern("8"), Intern("9")
   };
 
+#if 0
+  WARN("kati: CallFunc: %s - %s - %s",
+      args.size() > 0 ? args[0]->Eval(ev).c_str() : "nothing",
+      args.size() > 1 ? args[1]->Eval(ev).c_str() : "nothing",
+      args.size() > 2 ? args[2]->Eval(ev).c_str() : "nothing");
+#endif
+
   const string&& func_name_buf = args[0]->Eval(ev);
   const StringPiece func_name = TrimSpace(func_name_buf);
   Var* func = ev->LookupVar(Intern(func_name));
